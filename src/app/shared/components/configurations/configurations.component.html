@@ -1,0 +1,301 @@
+
+  <div class="main-content"> 
+    <div class="container-fluid">
+    
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title ">Packings</h4>                  
+                      <button class="btn btn-info btn-sm" style="float: right;" matTooltip="Crear nuevo" data-toggle="modal" data-target="#newPacProModal" (click)="newPacProShow()" ><!--(click)="newProd()"-->
+                        <i class="fa fa-plus-circle"> </i>
+                      </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                    <th>
+                                      Packings types
+                                    </th>
+                                    <th>
+                                      Product
+                                    </th>
+                                    <th>
+                                      Quantity
+                                    </th>  
+                                    <th>
+                                      Measure
+                                    </th> 
+                                    <th></th>    
+                                    <th></th>                                
+                                </thead>
+                                <tbody *ngFor = "let pack of packing">
+                                    <tr>
+                                        <td>
+                                          {{pack.name | uppercase}}
+                                        </td>
+                                        <td>
+                                          {{pack.product | uppercase}}
+                                        </td>
+                                        <td>
+                                            {{pack.units | currency}}
+                                        </td>
+                                        <td>
+                                          {{pack.measure | uppercase}}
+                                        </td>
+                                        <td class="td-actions text-right">
+                                          <button mat-raised-button type="button" style="width: 25%;" matTooltip="Edit"
+                                            class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons" style="font-size: 90%;" (click)="EditPacking(pack);" data-toggle="modal" data-target="#newPacProModal">edit</i>
+                                          </button>
+                                          <button mat-raised-button type="button" matTooltip="Remove" 
+                                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons" style="font-size: 90%;" (click)="DeletePacking(pack.$key);" >close</i>
+                                          </button>
+                                        </td>                                     
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title mt-0"> Products types</h4>                     
+                        <button class="btn btn-info btn-sm" style="float: right;" matTooltip="Crear nuevo" data-toggle="modal" data-target="#newTypeProdModal" (click)="newTypeProdShow()" ><!--(click)="newProd()"-->
+                          <i class="fa fa-plus-circle"> </i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                    <th>
+                                        Products types
+                                    </th> 
+                                    <th></th>    
+                                    <th></th>                             
+                                </thead>
+                                <tbody *ngFor="let type of prodtypes">
+                                    <tr>
+                                      <td>
+                                        {{type.name | uppercase}}
+                                      </td>
+                                      <td class="td-actions text-right">
+                                        <button mat-raised-button type="button" style="width: 25%;" matTooltip="Edit"
+                                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons" style="font-size: 90%;" (click)="EditTypeProd(type)"  data-toggle="modal" data-target="#newTypeProdModal">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove" 
+                                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons" style="font-size: 90%;" (click)="DeleteTypeProd(type)">close</i>
+                                        </button>
+                                      </td>
+                                    </tr>                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title mt-0"> Measures</h4>
+                      <button class="btn btn-info btn-sm" style="float: right;" data-container=".modal-body" matTooltip="Crear nuevo" data-toggle="modal" data-target="#newMeasureModal" (click)="newMeasureShow()" ><!--(click)="newMeasureShow()"-->
+                        <i class="fa fa-plus-circle"> </i>
+                      </button>                      
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="text-primary">
+                                  <th>
+                                      Measures Descriptions
+                                  </th> 
+                                  <th></th>    
+                                  <th></th>                             
+                              </thead>
+                              <tbody *ngFor="let measu of measure">
+                                  <tr>
+                                    <td>
+                                      {{measu.name | uppercase}}
+                                    </td>
+                                    <td class="td-actions text-right">
+                                      <button mat-raised-button type="button" style="width: 25%;" matTooltip="Edit"
+                                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons" style="font-size: 90%;" (click)="EditMeasure(measu);" data-toggle="modal" data-target="#newMeasureModal">edit</i>
+                                      </button>
+                                      <button mat-raised-button type="button" matTooltip="Remove"
+                                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <i class="fa fa-close" style="font-size: 90%;" (click)="DeleteMeasure(measu);" ></i>
+                                      </button>
+                                    </td>
+                                  </tr>                                  
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+        
+            </div>
+    </div>
+  </div>
+  <div class="modal fade" id="newPacProModal" tabindex="-1" role="dialog" aria-labelledby="newPacProModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modalformat">
+        <div class="alert alert-danger" role="alert" style="display: none;" id="alertConf">
+          <a style="color: whitesmoke;font-family: Arial, Helvetica, sans-serif;font-weight: 100;" id="alertConflblPac"></a> 
+        </div>
+          <div class="modal-header">
+                <h5 class="modal-title mdTitleG" id="newPacProModalLabel"> </h5>
+                <button type="button" class="btn btn-danger fa fa-times" id="btnCerrarPack" style="float: right;padding: 5px;" data-dismiss = "modal" data-toggle="tooltip" data-placement="top" title="CLOSE"></button>
+          </div>
+          <div class="modal-body">
+                <form action="" #frmpacking="ngForm" (ngSubmit)="SavePacking(frmpacking)" action="" method="post" id="newPacProForm" class="form-group frmModal" enctype="multipart/form-data">
+                  <div class="col-md-12">
+                    <div class="form-group frmGroupModal">
+                        <label for="" class="mdlblG">Packing name</label>
+                        <input type="text" class="form-control" value="" name="name" id="txtPacName" placeholder="Package name" pattern="[A-Za-z](3,30)" [(ngModel)]="packing.name" style="text-transform: uppercase;">
+                    </div>
+
+                    <div class="form-group frmGroupModal">
+                      <label for="" class="mdlblG">Product</label>
+                      <select name="product" id="idPacSelected" style="width: min-content;" class="form-control" [(ngModel)]="packing.product">
+                        <option value="0">---SELECT---</option>
+                        <option *ngFor="let prod of products" value={{prod.Name}}>
+                          {{prod.Name || uppercase}}
+                        </option>
+                    </select>
+                    </div>
+                    
+                    <div class="form-group frmGroupModal">
+                      <label for="" class="mdlblG">Measure</label>
+                      <select name="measure" id="packingMeasu" style="width: min-content;" class="form-control" [(ngModel)]="packing.measure">
+                        <option value="0">---SELECT---</option>
+                        <option *ngFor="let me of measure" value={{me.name}}>
+                          {{me.name}}
+                        </option>
+                    </select>
+                    </div>
+
+                    <div class="form-group frmGroupModal">
+                      <label for="" class="mdlblG">Quantity unds/lbs</label>
+                      <input type="number" class="form-control" value="0.00" name="units" id="txtPacunits" pattern="[A-Za-z](3,30)" [(ngModel)]="packing.units" placeholder="0.00" style="width: 30%;">
+                    </div>
+                    <div class="modal-footer">
+                      
+                      <button type="submit" class="btn btn-success fa fa-check" id="btnSavePacking" data-toggle="tooltip" data-placement="top" title="SAVE"></button>
+                      <button type="button" class="btn btn-success fa fa-check" id="btnEditPacking" (click)="EditPackingSave(frmpacking)" data-toggle="tooltip" data-placement="top" title="SAVE"></button>
+                    </div>
+                  </div>
+                </form>
+          </div>
+      </div>      
+    </div>
+  </div>
+  <div class="modal fade" id="newTypeProdModal"  tabindex="-1" role="dialog" aria-labelledby="newTypeProdModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modalformat">
+        <div class="alert alert-danger" role="alert" style="display: none;" id="alertConfTypeProd">
+          <a style="color: whitesmoke;font-family: Arial, Helvetica, sans-serif;font-weight: 100;" id="alertConflblTypeProd"></a> 
+        </div>
+        <div class="modal-header">          
+          <h5 class="modal-title mdTitleG" id="newTypeProdModalLabel"> </h5>
+          <button type="button" class="btn btn-danger fa fa-times" id="btnCerrarTypeProd" style="float: right;padding: 5px;" data-dismiss = "modal" data-toggle="tooltip" data-placement="top" title="CLOSE"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" #frmTypeProd="ngForm" (ngSubmit)="SaveTypeProd(frmTypeProd)" action="" method="post" id="newTypeProdForm" class="form-group frmModal" enctype="multipart/form-data">
+            <div class="col-md-12">
+              <div class="form-group frmGroupModal">
+                  <label for="" class="mdlblG">Type name</label>
+                  <input type="text" class="form-control" id="txtTypeProdName" value="" name="name" [(ngModel)]="prodtypes.name" style="text-transform: uppercase;">
+              </div>
+            </div>
+            <div class="modal-footer">             
+              <button type="submit" class="btn btn-success fa fa-check" id="btnSaveTypeProd" data-toggle="tooltip" data-placement="top" title="SAVE"></button>            
+              <button type="button" class="btn btn-success fa fa-check" id="btnEditTypeProd" (click)="EditTypeProdSave(frmTypeProd)" data-toggle="tooltip" data-placement="top" title="SAVE"></button>
+            </div>
+          </form>
+        </div>
+      </div>    
+    
+    </div>
+  </div>
+  <div class="modal fade" id="newMeasureModal"  tabindex="-1" role="dialog" aria-labelledby="newMeasureModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modalformat">
+        <div class="alert alert-danger" role="alert" style="display: none;" id="alertConfMeas">
+          <a style="color: whitesmoke;font-family: Arial, Helvetica, sans-serif;font-weight: 100;" id="alertConflblMeas"></a> 
+        </div>
+        <div class="modal-header">          
+          <h5 class="modal-title mdTitleG" id="newMeasureModalLabel"> </h5>
+          <button type="button" class="btn btn-danger fa fa-times" id="btnCerrarMeas" style="float: right;padding: 5px;" data-dismiss = "modal" data-toggle="tooltip" data-placement="top" title="CLOSE"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" #frmMeasure="ngForm" (ngSubmit)="SaveMeasure(frmMeasure)" action="" method="post" id="newMeasureForm" class="form-group frmModal" enctype="multipart/form-data">
+            <div class="col-md-12">
+              <div class="form-group frmGroupModal">
+                  <label for="" class="mdlblG">Measure name</label>
+                  <input type="text" class="form-control" id="txtMeasName" value="" name="name" [(ngModel)]="measure.name" style="text-transform: uppercase;">
+              </div>
+            </div>
+            <div class="modal-footer">             
+              <button type="submit" class="btn btn-success fa fa-check" id="btnSaveMeasure" data-toggle="tooltip" data-placement="top" title="SAVE"></button>            
+              <button type="button" class="btn btn-success fa fa-check" id="btnEditMeasure" (click)="EditMeasureSave(frmMeasure)" data-toggle="tooltip" data-placement="top" title="SAVE"></button>
+            </div>
+          </form>
+        </div>
+      </div>    
+    
+    </div>
+  </div>
+     <!-- Button trigger modal-->
+     <button type="button" id="btnCallAlert" style="display: none;" class="btn btn-primary" data-toggle="modal" data-target="#modalAlert"></button>
+
+     <!--Modal: modalRelatedContent-->
+      <div class="modal" id="modalAlert" tabindex="-1" role="dialog" style="padding-right: 30%;"
+        aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info mdlAlert" role="document">
+          <!--Content-->
+          <div class="modal-content" style="width: 145%;">
+            <!--Header-->
+            <div class="modal-header mdlAlertH">
+              <p class="heading mdTitleG" style="margin: 0px;" id="lblActivityConf">Activity Comment</p>
+
+              <button type="button" class="btn btn-danger fa fa-times" id="btnCloseAlert" data-dismiss="modal" aria-label="Close">
+              
+              </button>
+            </div>
+          
+           
+          </div>
+          <!--/.Content-->
+        </div>
+      </div>
+      <!-- Prue
+  <div class="form-group">
+    <div class="modal" id="modalAlert" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info mdlAlert" role="document">
+         
+          <div class="modal-content">
+          
+            <div class="modal-header" style="background-color: #00bcd4;">
+              <p class="heading mdTitleG">Activity Comment</p>
+
+              <button type="button" class="btn btn-danger fa fa-times" id="btnCloseAlert" data-dismiss="modal" aria-label="Close">
+              
+              </button>
+            </div>
+          
+           
+          </div>
+        
+        </div>
+      </div>
+  </div>
+--> 
+<!--Modal: modalRelatedContent-->

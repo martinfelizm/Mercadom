@@ -1,0 +1,163 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header card-header-success">
+          <h4 class="card-title mt-0"> Productos</h4>
+          <p class="card-category">Lista de productos registrados</p>  
+         <button class="btn btn-info btn-sm" style="float: right;" matTooltip="Crear nuevo" data-toggle="modal" data-target="#newProModal" (click)="newProdShow()" ><!--(click)="newProd()"-->
+            <i class="fa fa-plus-circle"> </i>
+          </button> 
+         
+        </div>
+                
+        <div class="card-body table-responsive" >
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="">
+                <th>
+                  Descripción
+                </th>
+                <th>
+                  Precio UND/LB
+                </th>
+                <th>
+                  Cantidad
+                </th>
+                <th>
+
+                </th>
+              </thead>
+              <tbody *ngFor="let prod of products">
+                <tr>
+                  <td>
+                    {{prod.Name | uppercase }}
+                  </td>
+                  <td>
+                    {{prod.PriceByUND | currency}}
+                  </td>
+                  <td>
+                    {{prod.Quantity}}
+                  </td>
+                  <td class="td-actions text-right">
+                    <button mat-raised-button type="button" style="width: 25%;" matTooltip="Edit"
+                       class="btn btn-primary btn-link btn-sm btn-just-icon">
+                      <i class="material-icons" style="font-size: 90%;"
+                        [routerLink]="['/productsDetails', prod.id]">edit</i>
+                    </button>
+                    <button mat-raised-button type="button" matTooltip="Remove" 
+                      class="btn btn-danger btn-link btn-sm btn-just-icon">
+                      <i class="material-icons" style="font-size: 90%;">close</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+  <!-- Modal -->
+  <div class="modal fade" id="newProModal" tabindex="-1" role="dialog" aria-labelledby="newProModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+     <div class="modal-dialog" role="document">
+        <div class="modal-content modalformat" >
+                    <!-- <div class="alert alert-danger alert-dismissable" role="alert" id="divMsgE1" style="visibility:hidden">
+                        <a style="font-weight:bold;visibility:hidden" id="divMsgE2"></a>
+
+                    </div>-->
+                  <!--  @if (ViewBag.sms == "ERRORPro2")
+                    {
+                        <div class="alert alert-danger alert-dismissable" role="alert">
+                            <a style="font-weight:bold"></a>
+
+                        </div>
+                    }-->
+              <div class="modal-header">
+
+                  <h5 class="modal-title mdTitleG" id="newProModalLabel" >Create Product</h5>
+              
+              </div>
+              <div class="modal-body">
+            
+                          <form #formGuardarProd="ngForm" (ngSubmit)="newProd(formGuardarProd)" action="" method="post" id="newModalForm" class="form-group frmModal" enctype="multipart/form-data">
+                              <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert" style="display: none;" id="alertConfProd">
+                                  <a style="color: whitesmoke;font-family: Arial, Helvetica, sans-serif;font-weight: 100;" id="alertConflblProd"></a> 
+                                </div>
+                                  <div class="form-group frmGroupModal">
+                                    <label for="compania" style="display:none">IDProducto</label>
+                                    <input type="text" name="txtIDProd" value="" id="txtIDProd" class="form-control" style="display:none;text-transform:uppercase" readonly="true" />
+                                  </div>
+                                
+                                  <div class="form-group frmGroupModal">
+                                    <label class="mdlblG" for="nombre">Product name</label>
+                                    <input type="text" name="Name" value="" id="txtProN" [(ngModel)]="productos.Name" class="form-control" placeholder="Name" pattern="[A-Za-z](3,30)" style="text-transform:uppercase" title="El Nombre del producto debe de tener por lo menos 3 letras y no mas de 30!" />
+                                  </div>
+                                  
+                                  <div class="form-group row" style="margin-left: 0px;">
+                                    <div class="form-group frmGroupModal">
+                                      <label class="mdlblG" for="precios">Price</label>
+                                      <input currencyMask  min="0" value="" name="PriceByUND" [(ngModel)]="productos.PriceByUND"  id="txtPrice"  placeholder="$0.00" style="text-transform: uppercase; text-align: left; max-width: 70%"  maxlength="14" class="form-control" [options]="{ prefix: 'R$ ', thousands: ',', decimal: '.' }"/>
+                                    </div>
+                                    
+                                    <!--input type="number"  name="precio" value="" class="form-control" id="txtPrecio"  style="text-transform:uppercase" /-->
+                                      <div class="form-group frmGroupModal">
+                                        <label class="mdlblG" for="cantidades">Quatity</label>                                    
+                                        <input type="number" name="Quantity" class="form-control" min="0" value="" id="txtCantidad" [(ngModel)]="productos.Quantity"  placeholder="0"  style="text-transform:uppercase; text-align: left; max-width: 50%" maxlength="14" />
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="form-group row" style="margin-left: 0px;">
+                                    <div class="form-group frmGroupModal">
+                                      <label class="mdlblG" for="empaques" >Packing</label>  
+                                      <select style="width: min-content;" class="form-control" id="pacSelect" name="Packing" [(ngModel)]="productos.Packing">
+                                        <option value="0">---SELECT---</option>
+                                        <option *ngFor="let pac of packings"  value= {{pac.id}}>
+                                          {{pac.name}}
+                                        </option>
+                                      </select>
+                                    </div>
+                                    
+                                    <div class="form-group frmGroupModal" style="padding-left: 5%;">
+                                      <label class="mdlblG" for="typo" >Product type</label>  
+                                      <select style="width: min-content;" class="form-control" id="typeSelect" name="Type" [(ngModel)]="productos.Type">
+                                        <option value="0">---SELECT---</option>
+                                        <option *ngFor="let tprod of typeProd"  value= {{tprod.Id}} >
+                                          {{tprod.Name}}
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div> 
+
+                              
+                                    
+                                    
+                                                                  
+                                  <!--label class="mdlblG" for="NombreComercial">Nombre Comercial</label>
+                                  <input type="text" name="NombreComercial" value="" id="txtCliNomComer" class="form-control" readonly="readonly" placeholder="Nombre Comercial del Cliente" style="text-transform:uppercase" />
+                                  <label class="mdlblG" for="Producto">Producto</label>
+                                  <input type="text" name="producto" value="" id="txtCliProd" class="form-control" placeholder="Nombre Producto a enviar"  style="text-transform:uppercase" title="El nombre del Producto del Cliente digitado debe tener por lo menos 2 letras y no mas de 15!" /-->
+                                  <!--label class="mdlblG" for="Producto">Pan</label-->                                 
+                                  <!--input [textMask]="{mask: maskPrice}" [(ngModel)]="myModel" placeholder="$0.00" type="text" required #ref/-->
+                                  <!--input currencyMask [(ngModel)]="myModel" value="" placeholder="$0.00" class="form-control" [options]="{ prefix: 'RD$ ', thousands: ',', decimal: '.' }" required #ref/-->
+                                  <!--label class="mdlblG" for="Logo">Logo</label>                                  
+                                  <input type="file" name="Logo" value="" accept=".jpg, .jpeg, .png" class="form-control" placeholder="Logo de la compañia" title="Debe de adjuntar la imagen del logo de la compañia" /-->
+                                
+                              </div>
+                          
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger fa fa-times" data-dismiss="modal"> Cerrar</button>
+                                  <button type="submit" class="btn btn-success fa fa-check" id="btnSaveNewCli" oclick="newProd();"> Guardar</button>                                   
+                              </div>
+                          
+                          </form>
+                
+              </div>
+           
+        </div>
+     </div>
+  </div>

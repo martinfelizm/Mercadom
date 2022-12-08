@@ -1,0 +1,1 @@
+jQuery('#newProModal').modal('hide');

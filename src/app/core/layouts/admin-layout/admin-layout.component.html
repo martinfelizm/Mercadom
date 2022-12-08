@@ -1,0 +1,166 @@
+<div class="wrapper wrap-all-the-things" id="wrapper">
+  
+    <div class="sidebar" id="sidebar-wrapper" data-color="green" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+          <!--<div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>-->
+          <button class='flotante fa fa-chevron-left' id="menu-toggle" href='#'></button>
+    </div>
+ 
+    <div class="main-panel" id="admMain" >    
+        <!--<app-navbar></app-navbar>-->
+      
+       <!--  <a class='flotante fas fa-chevron-left' style="float: left;" href='#' ></a>-->
+   <!--   
+       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+         <!-- <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>-->
+         <!--
+        <button class="navbar-toggler" id="menu-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fas fa-bars"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    -->
+       
+        <router-outlet ></router-outlet>
+       
+        <div *ngIf="isMaps('maps')">
+            
+            <app-footer id="page-content-wrapper"></app-footer>
+        </div>
+    </div>
+    <!--<div class="fixed-plugin">
+        <div class="dropdown show-dropdown open show">
+            <a href="#" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-cog fa-2x"> </i>
+            </a>
+            <ul class="dropdown-menu show" x-placement="bottom-start" style="position: absolute; top: 41px; left: -231px; will-change: top, left;">
+                <li class="header-title"> Sidebar Filters</li>
+                <li class="adjustments-line">
+                    <a href="javascript:void(0)" class="switch-trigger active-color">
+                        <div class="ml-auto mr-auto">
+                            <span class="badge filter badge-purple" data-color="purple"></span>
+                            <span class="badge filter badge-azure" data-color="azure"></span>
+                            <span class="badge filter badge-green" data-color="green"></span>
+                            <span class="badge filter badge-orange" data-color="orange"></span>
+                            <span class="badge filter badge-danger active" data-color="danger"></span>
+                        </div>
+                        <div class="clearfix"></div>
+                    <div class="ripple-container"></div></a>
+                </li>
+                <li class="header-title">Images</li>
+                <li>
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <img src="./assets/img/sidebar-1.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <img src="./assets/img/sidebar-2.jpg" alt="">
+                    <div class="ripple-container"></div></a>
+                </li>
+                <li>
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <img src="./assets/img/sidebar-3.jpg" alt="">
+                    </a>
+                </li>
+                <li class="active">
+                    <a class="img-holder switch-trigger" href="javascript:void(0)">
+                        <img src="./assets/img/sidebar-4.jpg" alt="">
+                    </a>
+                </li>               
+            </ul>
+        </div>
+    </div>
+</div>-->
+<!-- Buy-Modal-angular -->
+<div class="modal modal-angular fade" id="buy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="margin-top">
+                Free Version
+            </h4>
+            <div class="separator"></div>
+            <a href="https://www.creative-tim.com/product/material-dashboard" class="modal-button" target="_blank">
+                <div class="wrapper-card">
+                    <div class="image-container">
+                        <img src="./assets/img/html.png" alt="unloaded">
+                    </div>
+                    Html5
+                    <div class="separator"></div>
+                    <div class="product-type">
+                        FREE
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.creative-tim.com/product/material-dashboard-angular2" class="modal-button" target="_blank">
+                <div class="wrapper-card">
+                    <div class="image-container image-angular-cli">
+                        <img src="./assets/img/angular.png" alt="unloaded">
+                    </div>
+                    Angular
+                    <div class="separator"></div>
+                    <div class="product-type">
+                        FREE
+                    </div>
+                </div>
+            </a>
+            <h4>
+                PRO Version
+            </h4>
+            <div class="separator"></div>
+            <a href="https://www.creative-tim.com/product/material-dashboard-pro" class="modal-button" target="_blank">
+                <div class="image-container">
+                    <img src="./assets/img/html.png" alt="unloaded">
+                </div>
+                Html5
+                <div class="separator"></div>
+                <div class="price">
+                    from
+                    <span>
+                        49
+                        <i class="fa fa-usd" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </a>
+            <a href="https://www.creative-tim.com/product/material-dashboard-pro-angular2" class="modal-button" target="_blank">
+                <div class="image-container image-angular-cli">
+                    <img src="./assets/img/angular.png" alt="unloaded">
+                </div>
+                Angular
+                <div class="separator"></div>
+                <div class="price">
+                    from
+                    <span>
+                        59
+                        <i class="fa fa-usd" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</div>
